@@ -33,6 +33,7 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           args:
+            - run
             - --service={{ .Values.config.kyvernoService }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}

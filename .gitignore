@@ -10,3 +10,5 @@
 /backend/res
 
 .vscode
+
+/values.yaml
