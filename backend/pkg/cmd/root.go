@@ -81,7 +81,7 @@ func runCommand() *cobra.Command {
 		},
 	}
 
-	cmd.PersistentFlags().StringP("service", "s", "https://kyverno-svc.kyverno:443/validate/fail", "Kyverno validate API")
+	cmd.PersistentFlags().StringP("service", "s", "https://kyverno-svc.kyverno:443", "Kyverno validate API")
 	cmd.PersistentFlags().String("host", "0.0.0.0", "Server Host")
 	cmd.PersistentFlags().IntP("port", "p", 8080, "Server Port")
 	cmd.PersistentFlags().String("mode", gin.ReleaseMode, "Server mode")
@@ -113,7 +113,7 @@ func api(cmd *cobra.Command, router *gin.Engine) error {
 			return
 		}
 
-		resp, err := client.Post(service, "application/json", bytes.NewReader(data))
+		resp, err := client.Post(service+"/validate/fail", "application/json", bytes.NewReader(data))
 		if err != nil {
 			ctx.AbortWithError(http.StatusInternalServerError, err)
 			return

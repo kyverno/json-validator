@@ -1,0 +1,19 @@
+apiVersion: v2
+name: kyverno-json-validator
+type: application
+version: 0.1.0
+appVersion: v0.1.0
+icon: https://github.com/kyverno/kyverno/raw/main/img/logo.png
+description: Kyverno JSON Validator Web Application
+keywords:
+  - kubernetes
+  - nirmata
+  - policy agent
+  - validating webhook
+  - admissions controller
+sources:
+  - https://github.com/kyverno/json-validator
+maintainers:
+  - name: Nirmata
+    url: https://kyverno.io/
+kubeVersion: ">=1.16.0-0"

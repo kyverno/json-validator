@@ -19,6 +19,7 @@ KO_PLATFORMS        := all
 KO_TAGS             := $(GIT_SHA)
 IMAGE    			:= json-validator
 REPO     			:= $(REGISTRY)/$(REPO)/$(IMAGE)
+KO_REGISTRY         := ko.local
 
 ifndef VERSION
 APP_VERSION         := $(GIT_SHA)
@@ -111,13 +112,13 @@ build-backend: build-backend-assets ## Build backend
 	@cd backend && go mod tidy && go build .
 
 .PHONY: ko-build
-ko-build: $(KO) build-backend-assets ## Build playground image (with ko)
+ko-build: $(KO) build-backend-assets ## Build image (with ko)
 	@echo Build image with ko... >&2
 	@cd backend && LDFLAGS=$(LD_FLAGS) KOCACHE=$(KOCACHE) KO_DOCKER_REPO=$(KO_REGISTRY) \
 		$(KO) build . --preserve-import-paths --tags=$(KO_TAGS) --platform=$(LOCAL_PLATFORM)
 
 .PHONY: ko-publish
-ko-publish: $(KO) ## Build and publish playground image (with ko)
+ko-publish: $(KO) ## Build and publish image (with ko)
 	@echo Publishing image with ko... >&2
 	@cd backend && LDFLAGS=$(LD_FLAGS) KOCACHE=$(KOCACHE) KO_DOCKER_REPO=$(REPO) \
 		$(KO) build . --bare --tags=$(KO_TAGS) --platform=$(KO_PLATFORMS)

@@ -1,0 +1,33 @@
+{{ template "chart.header" . }}
+{{ template "chart.deprecationWarning" . }}
+{{ template "chart.description" . }}
+
+{{ template "chart.badgesSection" . }}
+
+## About
+
+Kyverno JSON Validator
+
+## Installing the Chart
+
+Add `kyverno-json-validator` Helm repository:
+
+```shell
+helm repo add kyverno-json-validator https://kyverno.github.io/json-validator/
+```
+
+Install `kyverno-json-validator` Helm chart:
+
+```shell
+helm install kyverno-json-validator --namespace kyverno --create-namespace kyverno-json-validator/kyverno-json-validator
+```
+
+{{ template "chart.valuesSection" . }}
+
+{{ template "chart.sourcesSection" . }}
+
+{{ template "chart.requirementsSection" . }}
+
+{{ template "chart.maintainersSection" . }}
+
+{{ template "helm-docs.versionFooter" . }}

@@ -6,6 +6,7 @@
 
 /backend/pkg/ui/dist
 /backend/coverage.out
+/backend/dist
 /backend/res
 
 .vscode
