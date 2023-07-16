@@ -2,11 +2,8 @@ name: image
 
 on:
   push:
-    branches:
-      - main
-    paths-ignore:
-      - "charts"
-      - ".workflows"
+    tags:
+      - 'v*'
 
 permissions:
   id-token: write
@@ -40,7 +37,7 @@ jobs:
         id: ko-publish
         run: |
           set -e
-          echo "digest=$(VERSION=${{ github.ref_name }} make ko-publish)" >> $GITHUB_OUTPUT
+          echo "digest=$(VERSION=${{ github.ref_name }} KO_TAGS=${{ github.ref_name }} make ko-publish)" >> $GITHUB_OUTPUT
       - name: Sign image
         run: |
           set -e
