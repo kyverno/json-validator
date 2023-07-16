@@ -37,7 +37,7 @@ jobs:
         id: ko-publish
         run: |
           set -e
-          echo "digest=$(VERSION=${{ github.ref_name }} KO_TAGS=${{ github.ref_name }} make ko-publish)" >> $GITHUB_OUTPUT
+          echo "digest=$(VERSION=${{ github.ref_name }} make KO_TAGS=${{ github.ref_name }} ko-publish)" >> $GITHUB_OUTPUT
       - name: Sign image
         run: |
           set -e
