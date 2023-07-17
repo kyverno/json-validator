@@ -5,7 +5,7 @@
       <JsonEditorVue id="editor" v-model="value" mode="text" :navigationBar="false" :mainMenuBar="false" />
       <template v-if="validated && !error">
         <v-alert :type="result ? 'success' : 'error'" class="rounded-0" closable v-model="validated">
-          Validation {{ result ? 'succeed' : 'failed:' }} <span v-if="!result" v-html="resultMessage" />
+          Validation {{ result ? 'succeeded' : 'failed:' }} <span v-if="!result" v-html="resultMessage" />
         </v-alert>
       </template>
       <template v-if="error">
